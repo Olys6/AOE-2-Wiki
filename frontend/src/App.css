@@ -1,0 +1,114 @@
+html, body {
+  background-color: rgb(74, 74, 74);
+  /* background-color: rgb(255, 80, 80); */
+  background-image: url("https://i.imgur.com/0wlcTFF.png");
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#navbar {
+  background-color: rgb(254, 88, 88);
+  background-image: url("https://i.imgur.com/7OQ4RrC.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.card {
+  transition: .4s;
+  transform: scale(1)
+}
+
+.card:hover {
+  transform: scale(1.04);
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+#cards {
+  margin-top: 1rem;
+  display: flex;
+  justify-content:space-evenly;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+#singleCivContainer {
+  margin-top: 1rem;
+  display: flex;
+  align-items:center;
+  flex-direction: column;
+}
+
+#FirstThreeTypesSingleCiv {
+  display: flex;
+  justify-content:space-around;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+#secondRowOfSingleCiv {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#uniqueUnitCards {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 90%;
+}
+
+.uniqueUnitCard {
+  max-width: 50%;
+}
+
+.unitCostSection {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* margin-top: -10px; */
+  
+}
+
+#unitCostList {
+  display: "flex"; 
+  flex-direction: "row"; 
+  justify-content: "flex-start"; 
+  /* align-items: flex-start; */
+  gap: "2rem";
+  /* flex-wrap: "wrap"; */
+  margin-top: 0;
+  /* margin-left: -10px; */
+  /* width: 60% */
+}
+
+#civBonusCard {
+  /* max-width: 50%; */
+}
+
+@media screen and (max-width: 600px) {
+  #secondRowOfSingleCiv {
+  flex-direction: column;
+}
+  #uniqueUnitCards {
+    min-width: 40%;
+    flex-direction: column;
+  }
+  #civBonusCard {
+  min-width: 50%;
+  }
+  .uniqueUnitCard{
+    max-width: 100%;
+  }
+}
