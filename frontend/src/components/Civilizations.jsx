@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Card, CardActions, CardContent, CardMedia, Button, Typography, LinearProgress } from '@mui/material';
-import { Link } from 'react-router-dom'
+import { LinearProgress } from '@mui/material';
+import CivilizationsCard from './CivilizationsCard'
 
 const civImageArray = [
   "https://i.imgur.com/IOiefGr.jpg", "https://i.imgur.com/bEWgLcR.png", "https://i.imgur.com/d56KpCe.png", 
@@ -11,7 +11,10 @@ const civImageArray = [
   "https://i.imgur.com/Z7PnHLd.png", "https://i.imgur.com/WYMECZ4.png", "https://i.imgur.com/H2fg05M.jpg",
   "https://i.imgur.com/g4mFeKM.png", "https://i.imgur.com/kRe4hls.png", "https://i.imgur.com/zDYv8kC.jpg",
   "https://i.imgur.com/c1x0pyi.png", "https://i.imgur.com/XOfPcAl.png", "https://i.imgur.com/LxUkEF8.png",
-  ""
+  "https://i.imgur.com/DIzleeD.png", "https://i.imgur.com/ffyCkAY.png", "https://i.imgur.com/eSbWxZ8.jpg",
+  "https://i.imgur.com/NzL1RI2.jpg", "https://i.imgur.com/f2WtOSQ.png", "https://i.imgur.com/t0azNfR.png",
+  "https://i.imgur.com/tOpLPSB.png", "https://i.imgur.com/4tODDr6.jpg", "https://i.imgur.com/xSgHFCe.png",
+  "https://i.imgur.com/qnXPP75.png", "https://i.imgur.com/8SiUWuy.jpg"
 ]
 
 const Civilization = () => {
@@ -44,27 +47,9 @@ const Civilization = () => {
           <div div id="cards" >
             {!hasError ?
               <>
-                {aoeAPI.map((arrItem, i) => {
+                {aoeAPI.map((arrItem, index) => {
                   return (
-                    <Card variant="outlined" sx={{ maxWidth: 345 }} key={arrItem.id} className="card">
-                      <CardMedia
-                        component="img"
-                        height="140"
-                        image={civImageArray[i]}
-                        alt="civ image"
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                          {arrItem.name}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          From the expansion of "{arrItem.expansion}" with an army type of {arrItem.army_type}.
-                        </Typography>
-                      </CardContent>
-                      <CardActions sx={{ justifyContent: "center" }} >
-                        <Link to={`/civilization/${arrItem.id}`} className="link"><Button size="small">Learn More</Button></Link>
-                      </CardActions>
-                    </Card>
+                    <CivilizationsCard key={arrItem.id} civImageArray={civImageArray} civ={arrItem} i={index}/>
                   )
                 })}
               </>
@@ -77,7 +62,6 @@ const Civilization = () => {
         </>
         :
         <>
-          {/* <Typography variant="h1" sx={{ color: "white", textAlign: "center" }}>LOADING...</Typography> */}
           <LinearProgress color="inherit" sx={{ color: "rgb(254, 88, 88)", paddingBottom: "0.3rem"}} />
         </>
       }

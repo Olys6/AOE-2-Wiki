@@ -14,12 +14,13 @@ html, body {
   background-position: center;
 }
 
-.card {
+
+
+#card {
   transition: .4s;
-  transform: scale(1)
 }
 
-.card:hover {
+#card:hover {
   transform: scale(1.04);
 }
 
@@ -65,13 +66,15 @@ html, body {
   flex-direction: row;
   gap: 1rem;
   justify-content: center;
-  align-items: flex-start;
-  max-width: 90%;
+  align-items: center;
+  max-width: 100%;
 }
 
 .uniqueUnitCard {
-  max-width: 50%;
+  /* max-width: 50%; */
 }
+
+
 
 .unitCostSection {
   display: flex;
@@ -94,16 +97,37 @@ html, body {
 }
 
 #civBonusCard {
-  /* max-width: 50%; */
+  max-width: 90%;
+}
+
+#civUniqueTechCards {
+  display:flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 830px) {
+    #navbar {
+    background-image: none;
+  }
 }
 
 @media screen and (max-width: 600px) {
+
+  #FirstThreeTypesSingleCiv {
+    gap: 0.5rem;
+  }
   #secondRowOfSingleCiv {
   flex-direction: column;
 }
   #uniqueUnitCards {
     min-width: 40%;
     flex-direction: column;
+  }
+  #uniqueUnitCard2 {
+  max-width: 100%;
   }
   #civBonusCard {
   min-width: 50%;
