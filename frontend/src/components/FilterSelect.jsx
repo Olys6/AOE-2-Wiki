@@ -1,57 +1,17 @@
 import React from 'react'
-import { FormControl, InputLabel, Select, MenuItem, Box, InputBase } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import { styled, alpha } from '@mui/material/styles';
+import { FormControl, InputLabel, Select, MenuItem, Box, TextField } from '@mui/material';
+
+
 
 const FilterSelect = ({ handleChange, armyTypeSelect, handleSearch }) => {
 
-  const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
-  }));
 
-  const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }));
-
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
-    '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('sm')]: {
-        width: '12ch',
-        '&:focus': {
-          width: '20ch',
-        },
-      },
-    },
-  }));
 
   return (
     <>
       <div id="SearchAndFilterOutsideDiv">
         <div id="searchAndFilterBar">
-          <Box if="searchAndFilterBar2" sx={{ display: 'flex', alignItems: 'center', width: "80%"}}>
+          <Box if="searchAndFilterBar2" sx={{ display: 'flex', alignItems: 'center', width: "98%", gap: "1rem" }}>
             <FormControl fullWidth>
               <InputLabel sx={{ color: "white" }} id="demo-simple-select-label">Army Types</InputLabel >
               <Select
@@ -83,16 +43,12 @@ const FilterSelect = ({ handleChange, armyTypeSelect, handleSearch }) => {
                 <MenuItem value={"Naval and Gunpowder"}>Naval and Gunpowder</MenuItem>
               </Select>
             </FormControl>
-            <Search sx={{ color: "white" }} >
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-                onChange={handleSearch}
-              />
-            </Search>
+            <TextField
+              onChange={handleSearch}
+              helperText=""
+              id="demo-helper-text-aligned-no-helper"
+              label="Search"
+            />
           </Box>
         </div>
       </div>

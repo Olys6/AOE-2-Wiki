@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { LinearProgress } from '@mui/material';
+import { LinearProgress, TextField } from '@mui/material';
 import CivilizationsCard from './CivilizationsCard'
 import CivilizationsCardNoImages from './CivilizationsCardNoImages'
 import FilterSelect from './FilterSelect'
 
 const civImageArray = [
-  "https://i.imgur.com/IOiefGr.jpg", "https://i.imgur.com/bEWgLcR.png", "https://i.imgur.com/d56KpCe.png", 
+  "https://i.imgur.com/IOiefGr.jpg", "https://i.imgur.com/bEWgLcR.png", "https://i.imgur.com/d56KpCe.png",
   "https://i.imgur.com/H4wszTv.png", "https://i.imgur.com/2sPvXXP.png", "https://i.imgur.com/EbQFMFe.png",
   "https://i.imgur.com/DIzleeD.png", "https://i.imgur.com/DIzleeD.png", "https://i.imgur.com/f2WtOSQ.png",
   "https://i.imgur.com/QbTqxlu.png", "https://i.imgur.com/xiY2AT6.png", "https://i.imgur.com/c0pYRab.png",
@@ -27,7 +27,7 @@ const Civilization = () => {
 
   const [armyTypeSelect, setArmyTypeSelect] = useState("All Civs")
   const [showCivImages, setShowCivImages] = useState(true)
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState("")
   const [filteredCivs, setFilteredCivs] = useState()
 
   useEffect(() => {
@@ -57,6 +57,9 @@ const Civilization = () => {
   };
 
   const handleSearch = (event) => {
+    if (event.target.value.includes("\\") || event.target.value.includes("(") || event.target.value.includes(")") 
+      || event.target.value.includes("*") || event.target.value.includes("[") || event.target.value.includes("+")) return;
+
     if (event.target.value !== "") {
       setShowCivImages(false)
     } else {
@@ -66,13 +69,13 @@ const Civilization = () => {
   }
 
   useEffect(() => {
-    if(!aoeAPI) return;
+    if (!aoeAPI) return;
 
     const regexSearch = new RegExp(search, 'i')
+    setFilteredCivs(aoeAPI.filter(civ => {
 
-      setFilteredCivs(aoeAPI.filter(civ => {
-        return regexSearch.test(aoeAPI.name) && (civ.army_type === armyTypeSelect || armyTypeSelect === 'All Civs')
-      }))
+      return regexSearch.test(civ.name) && (civ.army_type === armyTypeSelect || armyTypeSelect === 'All Civs')
+    }))
   }, [armyTypeSelect, aoeAPI, search])
 
   return (
@@ -83,27 +86,27 @@ const Civilization = () => {
           <div div id="cards" >
             {!hasError ?
               <>
-                {showCivImages 
-                ? 
-                <>
-                  {filteredCivs.map((arrItem, index) => {
-                    return (
-                      <CivilizationsCard key={arrItem.id} civImageArray={civImageArray} civ={arrItem} i={index} />
-                    )
+                {showCivImages
+                  ?
+                  <>
+                    {filteredCivs.map((arrItem, index) => {
+                      return (
+                        <CivilizationsCard key={arrItem.id} civImageArray={civImageArray} civ={arrItem} i={index} />
+                      )
                     })
-                  }
-                </> 
-                : 
-                <>
-                  {filteredCivs.map((arrItem, index) => {
-                    return (
-                      <CivilizationsCardNoImages key={arrItem.id} civImageArray={civImageArray} civ={arrItem} i={index} />
-                    )
-                  })
-                  }
-                </>
+                    }
+                  </>
+                  :
+                  <>
+                    {filteredCivs.map((arrItem, index) => {
+                      return (
+                        <CivilizationsCardNoImages key={arrItem.id} civImageArray={civImageArray} civ={arrItem} i={index} />
+                      )
+                    })
+                    }
+                  </>
                 }
-                
+
               </>
               :
               <>
@@ -114,7 +117,7 @@ const Civilization = () => {
         </>
         :
         <>
-          <LinearProgress color="inherit" sx={{ color: "rgb(254, 88, 88)", paddingBottom: "0.3rem"}} />
+          <LinearProgress color="inherit" sx={{ color: "rgb(254, 88, 88)", paddingBottom: "0.3rem" }} />
         </>
       }
     </>

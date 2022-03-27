@@ -28,14 +28,9 @@ html, body {
   display: flex;
   justify-content:center;
   align-items:center;
+  padding: 0.5rem 0.3rem 0.3rem 0.3rem;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-}
-
-#searchAndFilterBar2 {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
 }
 
 #card {
