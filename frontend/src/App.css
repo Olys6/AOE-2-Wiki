@@ -4,6 +4,7 @@ html, body {
   background-image: url("https://i.imgur.com/0wlcTFF.png");
   background-size: cover;
   background-attachment: fixed;
+  min-height: 100%;
 }
 
 #navbar {
@@ -31,6 +32,12 @@ html, body {
   padding: 0.5rem 0.3rem 0.3rem 0.3rem;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.selectItems {
+  display: "flex"; 
+  justify-content: "space-between";
+  align-items: "center"
 }
 
 #card {
@@ -130,7 +137,9 @@ html, body {
 }
 
 @media screen and (max-width: 600px) {
-
+  #searchAndFilterBar {
+    width: 100%;
+  }
   #FirstThreeTypesSingleCiv {
     gap: 0.5rem;
   }

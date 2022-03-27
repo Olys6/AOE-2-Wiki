@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Civilization from './components/Civilizations';
 import Navbar from './components/Navbar';
 import CivilizationShow from './components/CivilizationShow'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Route exact path='/civilizations' component={Civilization} />
         <Route exact path='/civilization/:id' component={CivilizationShow} />
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

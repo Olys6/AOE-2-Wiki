@@ -48,7 +48,7 @@ const Civilization = () => {
   // console.log("API ->", aoeAPI)
 
   const handleChange = (event) => {
-    if (event.target.value === "All Civs") {
+    if (event.target.value === "All Civs" && search === "") {
       setShowCivImages(true)
     } else {
       setShowCivImages(false)
@@ -71,10 +71,10 @@ const Civilization = () => {
   useEffect(() => {
     if (!aoeAPI) return;
 
-    const regexSearch = new RegExp(search, 'i')
+    const regexSearch = new RegExp(search, 'ig')
     setFilteredCivs(aoeAPI.filter(civ => {
 
-      return regexSearch.test(civ.name) && (civ.army_type === armyTypeSelect || armyTypeSelect === 'All Civs')
+      return regexSearch.test(civ.name) && (civ.army_type.toLowerCase().includes(armyTypeSelect.toLowerCase()) || armyTypeSelect === 'All Civs')
     }))
   }, [armyTypeSelect, aoeAPI, search])
 

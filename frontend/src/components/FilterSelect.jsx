@@ -1,7 +1,15 @@
 import React from 'react'
 import { FormControl, InputLabel, Select, MenuItem, Box, TextField } from '@mui/material';
-
-
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
+import ModeStandbyIcon from '@mui/icons-material/ModeStandby';
+import BedroomBabyIcon from '@mui/icons-material/BedroomBaby';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import TouchAppIcon from '@mui/icons-material/TouchApp';
+import SailingIcon from '@mui/icons-material/Sailing';
+import PetsIcon from '@mui/icons-material/Pets';
+import AddModeratorIcon from '@mui/icons-material/AddModerator';
+import ChurchIcon from '@mui/icons-material/Church';
+import BuildIcon from '@mui/icons-material/Build';
 
 const FilterSelect = ({ handleChange, armyTypeSelect, handleSearch }) => {
 
@@ -11,9 +19,9 @@ const FilterSelect = ({ handleChange, armyTypeSelect, handleSearch }) => {
     <>
       <div id="SearchAndFilterOutsideDiv">
         <div id="searchAndFilterBar">
-          <Box if="searchAndFilterBar2" sx={{ display: 'flex', alignItems: 'center', width: "98%", gap: "1rem" }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', width: "98%", gap: "1rem" }}>
             <FormControl fullWidth>
-              <InputLabel sx={{ color: "white" }} id="demo-simple-select-label">Army Types</InputLabel >
+              <InputLabel sx={{ color: "white", display: "flex", justifyContent: "space-between" }}  id="inputLabel">Army Types</InputLabel >
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -21,29 +29,23 @@ const FilterSelect = ({ handleChange, armyTypeSelect, handleSearch }) => {
                 value={armyTypeSelect}
                 label="Army Types"
                 onChange={handleChange}
-                sx={{ color: "white" }}
+                sx={{ color: "white", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}
               >
                 <MenuItem value={"All Civs"}>All army</MenuItem>
-                <MenuItem value={"Infantry and Monk"}>Infantry and Monk</MenuItem>
-                <MenuItem value={"Foot Archer"}>Foot Archer</MenuItem>
-                <MenuItem value={"Defensive"}>Defensive</MenuItem>
-                <MenuItem value={"Infantry"}>Infantry</MenuItem>
-                <MenuItem value={"Archer"}>Archer</MenuItem>
-                <MenuItem value={"Cavalry"}>Cavalry</MenuItem>
-                <MenuItem value={"Tower and naval"}>Tower and naval</MenuItem>
-                <MenuItem value={"Cavalry Archer"}>Cavalry Archer</MenuItem>
-                <MenuItem value={"Camel and naval"}>Camel and naval</MenuItem>
-                <MenuItem value={"Gunpowder and Monk"}>Gunpowder and Monk</MenuItem>
-                <MenuItem value={"Gunpowder"}>Gunpowder</MenuItem>
-                <MenuItem value={"Infantry and naval"}>Infantry and naval</MenuItem>
-                <MenuItem value={"Calvary and Naval"}>Calvary and Naval</MenuItem>
-                <MenuItem value={"Monk and Elephant"}>Monk and Elephant</MenuItem>
-                <MenuItem value={"Gunpowder and Cavalry"}>Gunpowder and Cavalry</MenuItem>
-                <MenuItem value={"Siege and Elephant Civilzation"}>Siege and Elephant Civilzation</MenuItem>
-                <MenuItem value={"Naval and Gunpowder"}>Naval and Gunpowder</MenuItem>
+                <MenuItem sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} value={"Infantry"}>Infantry <AccessibilityNewIcon /></MenuItem>
+                <MenuItem sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} value={"Archer"}>Archer <ModeStandbyIcon /></MenuItem>
+                <MenuItem sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} value={"Cavalry"}>Cavalry <BedroomBabyIcon /></MenuItem>
+                <MenuItem sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} value={"Camel"}>Camel <Brightness7Icon/></MenuItem>
+                <MenuItem sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} value={"Gunpowder"}>Gunpowder <TouchAppIcon /></MenuItem>
+                <MenuItem sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} value={"Naval"}>Naval <SailingIcon /></MenuItem>
+                <MenuItem sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} value={"Elephant"}>Elephant <PetsIcon /></MenuItem>
+                <MenuItem sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} value={"Siege"}>Siege <BuildIcon /></MenuItem>
+                <MenuItem sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} value={"Monk"}>Monk <ChurchIcon /></MenuItem>
+                <MenuItem sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} value={"Defensive"}>Defensive <AddModeratorIcon /></MenuItem>
               </Select>
             </FormControl>
             <TextField
+              sx={{ color: "white" }}
               onChange={handleSearch}
               helperText=""
               id="demo-helper-text-aligned-no-helper"
