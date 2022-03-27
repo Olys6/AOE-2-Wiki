@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { LinearProgress } from '@mui/material';
 import CivilizationsCard from './CivilizationsCard'
+import CivilizationsCardNoImages from './CivilizationsCardNoImages'
+import FilterSelect from './FilterSelect'
 
 const civImageArray = [
   "https://i.imgur.com/IOiefGr.jpg", "https://i.imgur.com/bEWgLcR.png", "https://i.imgur.com/d56KpCe.png", 
@@ -23,6 +25,11 @@ const Civilization = () => {
 
   const [hasError, setHasError] = useState(false)
 
+  const [armyTypeSelect, setArmyTypeSelect] = useState("All Civs")
+  const [showCivImages, setShowCivImages] = useState(true)
+  const [search, setSearch] = useState('')
+  const [filteredCivs, setFilteredCivs] = useState()
+
   useEffect(() => {
 
     const getData = async () => {
@@ -40,18 +47,63 @@ const Civilization = () => {
 
   // console.log("API ->", aoeAPI)
 
+  const handleChange = (event) => {
+    if (event.target.value === "All Civs") {
+      setShowCivImages(true)
+    } else {
+      setShowCivImages(false)
+    }
+    setArmyTypeSelect(event.target.value);
+  };
+
+  const handleSearch = (event) => {
+    if (event.target.value !== "") {
+      setShowCivImages(false)
+    } else {
+      setShowCivImages(true)
+    }
+    setSearch(event.target.value)
+  }
+
+  useEffect(() => {
+    if(!aoeAPI) return;
+
+    const regexSearch = new RegExp(search, 'i')
+
+      setFilteredCivs(aoeAPI.filter(civ => {
+        return regexSearch.test(aoeAPI.name) && (civ.army_type === armyTypeSelect || armyTypeSelect === 'All Civs')
+      }))
+  }, [armyTypeSelect, aoeAPI, search])
+
   return (
     <>
-      {aoeAPI ?
+      {filteredCivs ?
         <>
+          <FilterSelect armyTypeSelect={armyTypeSelect} handleChange={handleChange} handleSearch={handleSearch} />
           <div div id="cards" >
             {!hasError ?
               <>
-                {aoeAPI.map((arrItem, index) => {
-                  return (
-                    <CivilizationsCard key={arrItem.id} civImageArray={civImageArray} civ={arrItem} i={index}/>
-                  )
-                })}
+                {showCivImages 
+                ? 
+                <>
+                  {filteredCivs.map((arrItem, index) => {
+                    return (
+                      <CivilizationsCard key={arrItem.id} civImageArray={civImageArray} civ={arrItem} i={index} />
+                    )
+                    })
+                  }
+                </> 
+                : 
+                <>
+                  {filteredCivs.map((arrItem, index) => {
+                    return (
+                      <CivilizationsCardNoImages key={arrItem.id} civImageArray={civImageArray} civ={arrItem} i={index} />
+                    )
+                  })
+                  }
+                </>
+                }
+                
               </>
               :
               <>

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { LinearProgress, Card, CardContent, Typography, Container } from '@mui/material'
-import CivUniqueUnit1Card from './CivUniqueUnit1Card';
-import CivUniqueUnit2Card from './CivUniqueUnit2Card';
+import CivUniqueUnit1Card from './CivUniqueUnitCards/CivUniqueUnit1Card';
+import CivUniqueUnit2Card from './CivUniqueUnitCards/CivUniqueUnit2Card';
 import CivBonusCard from './CivBonusCard';
 import CivUniqueTech1 from './CivUniqueTechs/CivUniqueTech1.jsx';
 import CivUniqueTech2 from './CivUniqueTechs/CivUniqueTech2.jsx';
@@ -143,11 +143,9 @@ const CivilizationShow = () => {
               <div id="secondRowOfSingleCiv">
                 <div id="uniqueUnitCards">
                   {civUniqueUnit ? <CivUniqueUnit1Card {...civUniqueUnit} /> : <></>}
-
                   {civUniqueUnit2 ? <CivUniqueUnit2Card {...civUniqueUnit2} /> : <></>}
                 </div>
                 <CivBonusCard civ={civ} />
-
                 <div id="civUniqueTechCards">
                   {civUniqueTech ? <CivUniqueTech1 {...civUniqueTech} /> : <></>}
                   {civUniqueTech2 ? <CivUniqueTech2 {...civUniqueTech2} /> : <></>}
@@ -155,15 +153,11 @@ const CivilizationShow = () => {
               </div>
             </>
             :
-            <>
-              <Typography variant="h1">ERROR. PLEASE REFRESH THE PAGE</Typography>
-            </>
+            <Typography variant="h1">ERROR. PLEASE REFRESH THE PAGE</Typography>
           }
         </Container >
         :
-        <>
-          <LinearProgress color="inherit" sx={{ color: "rgb(254, 88, 88)", paddingBottom: "0.3rem" }} />
-        </>
+        <LinearProgress color="inherit" sx={{ color: "rgb(254, 88, 88)", paddingBottom: "0.3rem" }} />
       }
     </>
   )
