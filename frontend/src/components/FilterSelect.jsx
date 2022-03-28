@@ -21,17 +21,16 @@ const FilterSelect = ({ handleChange, armyTypeSelect, handleSearch }) => {
         <div id="searchAndFilterBar">
           <Box sx={{ display: 'flex', alignItems: 'center', width: "98%", gap: "1rem" }}>
             <FormControl fullWidth>
-              <InputLabel sx={{ color: "white", display: "flex", justifyContent: "space-between" }}  id="inputLabel">Army Types</InputLabel >
+              <InputLabel sx={{ display: "flex", justifyContent: "space-between" }} color={"secondary"} id="inputLabel">Army Types</InputLabel >
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
                 // defaultValue="All Civs"
                 value={armyTypeSelect}
                 label="Army Types"
                 onChange={handleChange}
-                sx={{ color: "white", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}
+                color={"secondary"}
+                sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", maxHeight: "3.5rem" }}
               >
-                <MenuItem value={"All Civs"}>All army</MenuItem>
+                <MenuItem value={"All Civs"}>All Civilizations</MenuItem>
                 <MenuItem sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} value={"Infantry"}>Infantry <AccessibilityNewIcon /></MenuItem>
                 <MenuItem sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} value={"Archer"}>Archer <ModeStandbyIcon /></MenuItem>
                 <MenuItem sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }} value={"Cavalry"}>Cavalry <BedroomBabyIcon /></MenuItem>
@@ -45,7 +44,7 @@ const FilterSelect = ({ handleChange, armyTypeSelect, handleSearch }) => {
               </Select>
             </FormControl>
             <TextField
-              sx={{ color: "white" }}
+              color={"secondary"}
               onChange={handleSearch}
               helperText=""
               id="demo-helper-text-aligned-no-helper"

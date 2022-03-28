@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { LinearProgress, TextField } from '@mui/material';
+import { LinearProgress } from '@mui/material';
 import CivilizationsCard from './CivilizationsCard'
 import CivilizationsCardNoImages from './CivilizationsCardNoImages'
 import FilterSelect from './FilterSelect'
@@ -57,7 +57,7 @@ const Civilization = () => {
   };
 
   const handleSearch = (event) => {
-    if (event.target.value.includes("\\") || event.target.value.includes("(") || event.target.value.includes(")") 
+    if (event.target.value.includes("\\") || event.target.value.includes("(") || event.target.value.includes(")")
       || event.target.value.includes("*") || event.target.value.includes("[") || event.target.value.includes("+")) return;
 
     if (event.target.value !== "") {
@@ -79,7 +79,7 @@ const Civilization = () => {
   }, [armyTypeSelect, aoeAPI, search])
 
   return (
-    <>
+    <div id="page">
       {filteredCivs ?
         <>
           <FilterSelect armyTypeSelect={armyTypeSelect} handleChange={handleChange} handleSearch={handleSearch} />
@@ -89,21 +89,15 @@ const Civilization = () => {
                 {showCivImages
                   ?
                   <>
-                    {filteredCivs.map((arrItem, index) => {
-                      return (
-                        <CivilizationsCard key={arrItem.id} civImageArray={civImageArray} civ={arrItem} i={index} />
-                      )
-                    })
-                    }
+                    {filteredCivs.map((arrItem, index) => (
+                      <CivilizationsCard key={arrItem.id} civImageArray={civImageArray} civ={arrItem} i={index} />
+                    ))}
                   </>
                   :
                   <>
-                    {filteredCivs.map((arrItem, index) => {
-                      return (
-                        <CivilizationsCardNoImages key={arrItem.id} civImageArray={civImageArray} civ={arrItem} i={index} />
-                      )
-                    })
-                    }
+                    {filteredCivs.map((arrItem, index) => (
+                      <CivilizationsCardNoImages key={arrItem.id} civImageArray={civImageArray} civ={arrItem} i={index} />
+                    ))}
                   </>
                 }
 
@@ -120,7 +114,7 @@ const Civilization = () => {
           <LinearProgress color="inherit" sx={{ color: "rgb(254, 88, 88)", paddingBottom: "0.3rem" }} />
         </>
       }
-    </>
+    </div>
   )
 }
 

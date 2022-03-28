@@ -7,6 +7,13 @@ html, body {
   min-height: 100%;
 }
 
+#page {
+  min-height: 100%;
+  color: #545454
+}
+
+
+
 #navbar {
   background-color: rgb(254, 88, 88);
   background-image: url("https://i.imgur.com/7OQ4RrC.png");
@@ -128,6 +135,26 @@ html, body {
   justify-content:center;
   align-items: center;
   gap: 1rem;
+}
+
+#footer {
+  height: 10rem;
+  background-color: rgb(254, 88, 88);
+  border-top: 3px solid white;
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.footerLink {
+  text-decoration: none;
+  color: rgb(220, 212, 0);
+}
+
+.footerLink:hover {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 830px) {
