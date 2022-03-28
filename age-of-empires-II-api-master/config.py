@@ -30,3 +30,5 @@ SWAGGER_CONFIG = {
     "swagger_ui": True,
     "specs_route": "/docs/"
 }
+
+DOMAIN = "localhost"

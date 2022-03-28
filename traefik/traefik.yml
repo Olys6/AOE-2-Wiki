@@ -1,0 +1,24 @@
+entryPoints:
+  web:
+    address: ":80"
+
+
+  websec:
+    address: ":443"
+
+providers:
+  docker:
+    watch: true
+    exposedByDefault: false
+  file:
+    directory: /etc/traefik/config
+    watch: true
+
+api:
+  insecure: true
+
+log:
+  level: DEBUG
+
+accessLog:
+  filepath: /traefik/logs/access.log

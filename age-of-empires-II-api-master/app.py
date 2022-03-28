@@ -1,6 +1,6 @@
 from flask import redirect, jsonify, request
 from sqlalchemy_utils import database_exists
-from config import APP_CONFIG, API_PREFIX, DB_NAME
+from config import APP_CONFIG, API_PREFIX, DB_NAME, DOMAIN
 from api import create_app
 from db.populate_tables import populate_db
 from db import db
@@ -8,7 +8,7 @@ from collections import OrderedDict
 from flask_cors import CORS
 
 app = create_app(APP_CONFIG)
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+cors = CORS(app, origins=[f"http://api.{DOMAIN}",f"http://www.{DOMAIN}",f"http://{DOMAIN}"])
 
 @app.before_first_request
 def create_tables():

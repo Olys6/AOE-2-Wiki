@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+
+  traefik:
+    image: traefik:latest
+    ports:
+      - "80:80"
+      - "443:443"
+      - "127.0.0.1:8000:8080"
+    networks: 
+      - proxy
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik:/etc/traefik
+
+
+  aoeapi:
+    build: 
+      context: ./age-of-empires-II-api-master
+    networks: 
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      # - "traefik.http.routers.react.tls=true"
+      - "traefik.http.routers.aoeapi.entrypoints=web"
+      - "traefik.http.routers.aoeapi.rule=Host(`api.${DOMAIN}`)"
+    
+  frontend:
+    build: 
+      context: ./frontend
+      target: prod
+    environment: 
+      - WDS_SOCKET_PORT=0
+    networks: 
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      # - "traefik.http.routers.react.tls=true"
+      - "traefik.http.routers.react.entrypoints=web"
+      - "traefik.http.routers.react.rule=Host(`www.${DOMAIN}`) || Host(`${DOMAIN}`)"
+
+networks:
+  proxy:
+    driver: bridge
+
+    
