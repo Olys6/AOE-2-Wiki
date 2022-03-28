@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Box, Toolbar, Typography, InputBase, MenuItem } from '@mui/material/'
+import { AppBar, Box, Toolbar, Typography, MenuItem } from '@mui/material/'
 // import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 
@@ -21,8 +21,8 @@ const Navbar = () => {
             <MenuIcon />
             
           </IconButton> */}
-          <Link className='link' to="/civilizations">
-          <MenuItem href='/home'>
+          <Link className='link' to="/">
+          <MenuItem href='/'>
             Civilizations
           </MenuItem>
           </Link>

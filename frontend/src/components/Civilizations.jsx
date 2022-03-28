@@ -4,6 +4,7 @@ import { LinearProgress } from '@mui/material';
 import CivilizationsCard from './CivilizationsCard'
 import CivilizationsCardNoImages from './CivilizationsCardNoImages'
 import FilterSelect from './FilterSelect'
+import config from '../config'
 
 const civImageArray = [
   "https://i.imgur.com/IOiefGr.jpg", "https://i.imgur.com/bEWgLcR.png", "https://i.imgur.com/d56KpCe.png",
@@ -34,7 +35,7 @@ const Civilization = () => {
 
     const getData = async () => {
       try {
-        const { data } = await axios.get('http://localhost:8080/api/v1/civilizations')
+        const { data } = await axios.get(`http://api.${config.DOMAIN}/api/v1/civilizations`)
         // console.log(data)
         setAoeAPI(data.civilizations)
       } catch (err) {

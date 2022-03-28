@@ -7,6 +7,7 @@ import CivUniqueUnit2Card from './CivUniqueUnitCards/CivUniqueUnit2Card';
 import CivBonusCard from './CivBonusCard';
 import CivUniqueTech1 from './CivUniqueTechs/CivUniqueTech1.jsx';
 import CivUniqueTech2 from './CivUniqueTechs/CivUniqueTech2.jsx';
+import config from '../config'
 
 const CivilizationShow = () => {
 
@@ -26,7 +27,7 @@ const CivilizationShow = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:8080/api/v1/civilization/${id}`)
+        const { data } = await axios.get(`http://api.${config.DOMAIN}/api/v1/civilization/${id}`)
         setCiv(data)
         setCivUniqueUnitLink(data.unique_unit)
         setCivUniqueTechLink(data.unique_tech)

@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Switch>
-        <Route exact path='/civilizations' component={Civilization} />
+        <Route exact path='/' component={Civilization} />
         <Route exact path='/civilization/:id' component={CivilizationShow} />
       </Switch>
       <Footer />
