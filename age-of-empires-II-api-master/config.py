@@ -31,4 +31,4 @@ SWAGGER_CONFIG = {
     "specs_route": "/docs/"
 }
 
-DOMAIN = "localhost"
+DOMAIN = "olys.eu"
