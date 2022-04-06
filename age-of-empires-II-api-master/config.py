@@ -31,4 +31,4 @@ SWAGGER_CONFIG = {
     "specs_route": "/docs/"
 }
 
-DOMAIN = "onac.eu"
+DOMAIN = "aoe-wiki-app.onac.eu"
