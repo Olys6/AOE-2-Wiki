@@ -1,3 +1,3 @@
-const config = { "DOMAIN": "olys.eu" };
+const config = { "DOMAIN": "onac.eu" };
 
 export default config;
